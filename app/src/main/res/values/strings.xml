@@ -11,6 +11,7 @@
     <string name="repeat_password">Repeat password</string>
     <string name="sign_up">SIGN UP</string>
     <string name="create_account">Create Account</string>
+    <string name="already_have_an_account">Already have an account</string>
 
     <string-array name="article_categories">
         <item>business</item>

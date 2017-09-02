@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.jswiftdev.news.R;
 import com.jswiftdev.news.SignInActivity;
 import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Utils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -60,10 +61,11 @@ public class SignUp extends Fragment {
 
     @OnClick(R.id.btn_sign_up)
     public void signUp() {
-        if (!etEmail.getText().toString().isEmpty() && etPasswordOriginal.getText().toString().equals(etPasswordRepeat.getText().toString())) {
+        if (!etEmail.getText().toString().isEmpty()
+                && etPasswordOriginal.getText().toString().equals(etPasswordRepeat.getText().toString())
+                && Utils.isEmailAddressValid(etEmail.getText().toString())) {
             ((SignInActivity) getActivity()).progressDialog.setMessage("Sign you up, please wait...");
             ((SignInActivity) getActivity()).progressDialog.show();
-
 
             ((SignInActivity) getActivity()).mAuth.createUserWithEmailAndPassword(etEmail.getText().toString(),
                     etPasswordOriginal.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -75,7 +77,7 @@ public class SignUp extends Fragment {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d(C.LOG_TAG, "Failed " + e.getMessage());
+                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override
@@ -84,8 +86,17 @@ public class SignUp extends Fragment {
                     getActivity().finish();
                 }
             });
+        } else if (!Utils.isEmailAddressValid(etEmail.getText().toString())) {
+            Toast.makeText(getActivity(), "Please enter a valid email address", Toast.LENGTH_LONG).show();
+        } else if (!etPasswordOriginal.getText().toString().equals(etPasswordRepeat.getText().toString())) {
+            Toast.makeText(getActivity(), "Password mismatch", Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(getActivity(), "Invalid sign up details", Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick(R.id.goto_login)
+    public void gotoLogin() {
+        ((SignInActivity) getActivity()).move(Login.newInstance());
     }
 
 

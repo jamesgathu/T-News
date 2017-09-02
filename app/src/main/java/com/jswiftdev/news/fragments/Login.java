@@ -3,7 +3,6 @@ package com.jswiftdev.news.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseUser;
 import com.jswiftdev.news.R;
 import com.jswiftdev.news.SignInActivity;
-import com.jswiftdev.news.utils.C;
 import com.jswiftdev.news.utils.Utils;
 
 import butterknife.BindView;
@@ -84,13 +82,12 @@ public class Login extends Fragment {
                     etPassword.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Log.d(C.LOG_TAG, "Completed " + task.toString());
                     ((SignInActivity) getActivity()).progressDialog.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d(C.LOG_TAG, "Failed " + e.getMessage());
+                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                 @Override

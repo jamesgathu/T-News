@@ -8,12 +8,18 @@
 
     <ImageView
         android:id="@+id/app_icon"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:src="@drawable/newspaper"
-        android:tint="@color/colorAccent" />
+        android:src="@drawable/app_icon" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@+id/app_icon"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/login_text" />
 
 
     <!--email field-->
@@ -58,7 +64,7 @@
         android:layout_below="@+id/layout_email_field"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rectangle_login"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
@@ -92,7 +98,7 @@
         android:layout_below="@+id/layout_password"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/rectangle_login"
         android:orientation="horizontal"
         android:paddingBottom="10dp"
@@ -124,11 +130,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/layout_password_repeat"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/action_button"
         android:ems="10"
         android:text="@string/sign_up"
         android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/goto_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"
+        android:text="@string/already_have_an_account" />
 
 
 </RelativeLayout>

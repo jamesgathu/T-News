@@ -27,15 +27,21 @@
             android:name="DOMAIN_PACKAGE_NAME"
             android:value="com.jswiftdev.news.models" />
 
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SignInActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignInActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ArticlesPage" />
+        <activity
+            android:name=".ArticlesPage"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
