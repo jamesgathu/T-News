@@ -1,6 +1,6 @@
 
 # News Demo  ![Alt text](app/src/main/res/drawable-ldpi/app_icon.png?raw=true "App Icon")
-[ ![Core](screenshots/donwload.svg) ](latest-apk/news_demo.apk?raw=true)
+[ ![Core](screenshots/download.svg) ](latest-apk/news_demo.apk?raw=true)
 
 News Demo provides a simple example of a news App.
 
