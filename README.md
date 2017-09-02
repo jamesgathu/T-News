@@ -8,7 +8,7 @@ To set up and learn please get API key first.
 ![Alt text](screenshots/1.png?raw=true "News")
 ![Alt text](screenshots/2.png?raw=true "News")
 
-Download the apk file here [NEWS Demo apk](latest-apk/news_demo.apk)
+Download the apk file here [NEWS Demo apk](latest-apk/news_demo.apk?raw=true)
 
 Want to learn more about the developer? [Visit Developers site](http://165.227.122.70/)
 
