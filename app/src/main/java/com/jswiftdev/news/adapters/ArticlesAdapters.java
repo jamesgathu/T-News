@@ -50,7 +50,8 @@ public class ArticlesAdapters extends RecyclerView.Adapter<ArticlesAdapters.Arti
             Log.d(C.LOG_TAG, "Could not parse time " + e.getMessage());
         }
 
-        Glide.with(context).load(currentArticle.getUrlToImage())
+        Glide.with(context)
+                .load(currentArticle.getUrlToImage())
                 .into(holder.imArticleImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
