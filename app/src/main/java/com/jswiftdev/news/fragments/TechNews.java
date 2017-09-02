@@ -30,18 +30,6 @@ public class TechNews extends Master implements SourceChangesListener {
         techNews = new ArrayList<>();
     }
 
-    @Override
-    void cacheForView(List<Article> articles) {
-        this.techNews = articles;
-    }
-
-    @Override
-    boolean alreadyHasNews() {
-        if (this.techNews == null)
-            this.techNews = new ArrayList<>();
-
-        return this.techNews.size() > 0;
-    }
 
     @Override
     public void onResume() {
