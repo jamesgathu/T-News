@@ -1,3 +1,4 @@
+![Alt text](app/src/main/res/drawable-ldpi/app_icon.png?raw=true "App Icon")
 # News Demo
 News Demo provides a simple example of a news App.
 
