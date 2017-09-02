@@ -5,16 +5,14 @@ import android.util.Log;
 import android.view.View;
 
 import com.jswiftdev.news.MainActivity;
-import com.jswiftdev.news.models.Article;
-import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Constants;
 import com.jswiftdev.news.utils.interfaces.SourceChangesListener;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
+/**
+ * displays a list of articles on the {@link Constants#TAG_GENERAL} tab
+ */
 public class Home extends Master implements SourceChangesListener {
-    private List<Article> generalNews;
 
     public static Home newInstance() {
         Bundle args = new Bundle();
@@ -26,21 +24,8 @@ public class Home extends Master implements SourceChangesListener {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        generalNews = new ArrayList<>();
     }
 
-    @Override
-    void cacheForView(List<Article> articles) {
-        this.generalNews = articles;
-    }
-
-    @Override
-    boolean alreadyHasNews() {
-        if (generalNews == null)
-            this.generalNews = new ArrayList<>();
-
-        return this.generalNews.size() > 0;
-    }
 
     @Override
     public void onResume() {
@@ -50,7 +35,8 @@ public class Home extends Master implements SourceChangesListener {
 
     @Override
     public void OnSourceChanged(String newSource) {
-        Log.d(C.LOG_TAG, "home news -> OnSourceChanged");
+        Log.d(Constants.LOG_TAG, "home news -> OnSourceChanged");
+        /*forward request to {@link Master#sourceChangedMaster}*/
         sourceChangedMaster(newSource);
     }
 }

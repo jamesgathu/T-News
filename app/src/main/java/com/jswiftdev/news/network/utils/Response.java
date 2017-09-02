@@ -5,7 +5,9 @@ import com.jswiftdev.news.models.Source;
 
 import java.util.List;
 
-
+/**
+ * marks the overall template for responses from the server
+ */
 public class Response {
     private String status;
     private String source;
@@ -22,10 +24,20 @@ public class Response {
         this.sources = sources;
     }
 
+    /**
+     * should be called only after {@link com.jswiftdev.news.network.Api#getArticles(String)}
+     *
+     * @return list of articles from the response body
+     */
     public List<Article> getArticles() {
         return articles;
     }
 
+    /**
+     * should be called only after {@link com.jswiftdev.news.network.Api#getSources(String)} otherwise will return null
+     *
+     * @return list of sources from the response body
+     */
     public List<Source> getSources() {
         return sources;
     }
@@ -40,10 +52,18 @@ public class Response {
                 '}';
     }
 
+    /**
+     * confirm that the request to the server succeeded
+     *
+     * @return true if successful
+     */
     public boolean isSuccessful() {
         return status.equals("ok");
     }
 
+    /**
+     * cache source of news articles
+     */
     public void saveSources() {
         if (sources != null) {
             for (Source source : sources) {
@@ -52,6 +72,9 @@ public class Response {
         }
     }
 
+    /**
+     * cache some article to local storage to show before the next fetch
+     */
     public void saveArticles() {
         for (Article article : articles) {
             if (!Article.exists(article.getTitle()))

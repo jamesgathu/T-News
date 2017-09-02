@@ -6,16 +6,32 @@ import org.joda.time.DateTime;
 import org.joda.time.Duration;
 import org.joda.time.format.DateTimeFormat;
 
+/**
+ * contains reusable methods from any part of the application
+ */
 public class Utils {
+    /**
+     * checks if an email address if valid
+     *
+     * @param emailAddress to be validated
+     * @return true if string is a valid email address
+     */
     public static boolean isEmailAddressValid(String emailAddress) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         return emailAddress.matches(emailPattern);
     }
 
 
+    /**
+     * takes in a string representation of time similar to {@link Constants#SERVER_DATE_FORMAT}
+     * and finds its relative time that is more human readable
+     *
+     * @param dateToFind unformatted  datetime string
+     * @return relative time String <i>e.g 5 hours ago, yesterday e.t.c</i>
+     */
     public static String getRelativeTime(String dateToFind) {
         DateTime dateNow = DateTime.now();
-        DateTime dateToCompare = (DateTimeFormat.forPattern(C.SERVER_DATE_FORMAT)).parseDateTime(dateToFind);
+        DateTime dateToCompare = (DateTimeFormat.forPattern(Constants.SERVER_DATE_FORMAT)).parseDateTime(dateToFind);
 
         int seconds, minutes, hours, days;
 
@@ -55,7 +71,7 @@ public class Utils {
         if ((days / 7) > 4)
             return days / 30 + " months ago";
 
-        Log.d(C.LOG_TAG, "Failed " + dateToFind + " hours -> " + hours + "\tdays -> " + days);
+        Log.d(Constants.LOG_TAG, "Failed " + dateToFind + " hours -> " + hours + "\tdays -> " + days);
         return "Not applicable";
     }
 }

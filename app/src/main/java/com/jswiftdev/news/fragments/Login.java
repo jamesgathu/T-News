@@ -23,13 +23,28 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+/**
+ * provides interface and logic login using firebase
+ */
 public class Login extends Fragment {
+    /**
+     * field for email entry
+     */
     @BindView(R.id.et_email)
     EditText etEmail;
+
+    /**
+     * field for password entry
+     */
     @BindView(R.id.et_password)
     EditText etPassword;
 
 
+    /**
+     * called for creation of new instance of the fragment
+     *
+     * @return a single instance of {@link Login} fragment
+     */
     public static Login newInstance() {
         Bundle args = new Bundle();
         Login fragment = new Login();
@@ -66,11 +81,17 @@ public class Login extends Fragment {
         }
     }
 
+    /**
+     * handles calls to start {@link SignUp}
+     */
     @OnClick(R.id.tv_Create_account)
     public void gotoSignUp() {
         ((SignInActivity) getActivity()).move(SignUp.newInstance());
     }
 
+    /**
+     * handles clicks on the login button
+     */
     @OnClick(R.id.btn_login)
     public void login() {
         if (!etEmail.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty() &&

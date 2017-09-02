@@ -1,12 +1,10 @@
 package com.jswiftdev.news.network;
 
-import android.util.Log;
-
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.FieldAttributes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Constants;
 import com.orm.SugarRecord;
 
 import java.io.IOException;
@@ -32,8 +30,8 @@ public class ServiceGenerator {
                 HttpUrl originalHttpUrl = original.url();
 
                 HttpUrl url = originalHttpUrl.newBuilder()
-                        .addQueryParameter("apiKey", C.API_KEY)
-                        .addQueryParameter("language", C.EN)
+                        .addQueryParameter("apiKey", Constants.API_KEY)
+                        .addQueryParameter("language", Constants.EN)
                         .build();
 
                 // Request customization: add request headers
@@ -55,7 +53,7 @@ public class ServiceGenerator {
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl(C.BASE_URL)
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(clientBuilder)
                 .build();

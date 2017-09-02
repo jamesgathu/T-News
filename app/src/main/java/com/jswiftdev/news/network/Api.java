@@ -5,10 +5,12 @@ import com.jswiftdev.news.network.utils.Response;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
+/**
+ * provides template for the calls that are made to the server
+ */
 public interface Api {
 
     /**

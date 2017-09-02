@@ -14,7 +14,7 @@ import com.bumptech.glide.Glide;
 import com.jswiftdev.news.ArticlesPage;
 import com.jswiftdev.news.R;
 import com.jswiftdev.news.models.Article;
-import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Constants;
 import com.jswiftdev.news.utils.Utils;
 
 import java.util.List;
@@ -22,11 +22,18 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ArticlesAdapters extends RecyclerView.Adapter<ArticlesAdapters.ArticlesViewHolder> {
+public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ArticlesViewHolder> {
+    /**
+     * carries context information for the calling party
+     */
     private Context context;
+
+    /**
+     * provides a list of articles to be displayed
+     */
     private List<Article> articleList;
 
-    public ArticlesAdapters(Context context, List<Article> articleList) {
+    public ArticlesAdapter(Context context, List<Article> articleList) {
         this.context = context;
         this.articleList = articleList;
     }
@@ -47,7 +54,7 @@ public class ArticlesAdapters extends RecyclerView.Adapter<ArticlesAdapters.Arti
         try {
             holder.tvTime.setText(Utils.getRelativeTime(currentArticle.getPublishedAt()));
         } catch (Exception e) {
-            Log.d(C.LOG_TAG, "Could not parse time " + e.getMessage());
+            Log.d(Constants.LOG_TAG, "Could not parse time " + e.getMessage());
         }
 
         Glide.with(context)
@@ -58,7 +65,7 @@ public class ArticlesAdapters extends RecyclerView.Adapter<ArticlesAdapters.Arti
             @Override
             public void onClick(View v) {
                 Intent showArticleContent = new Intent(context, ArticlesPage.class);
-                showArticleContent.putExtra(C.KEY_URL, currentArticle.getUrl());
+                showArticleContent.putExtra(Constants.KEY_URL, currentArticle.getUrl());
                 context.startActivity(showArticleContent);
             }
         });

@@ -1,16 +1,12 @@
 package com.jswiftdev.news.fragments;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.jswiftdev.news.MainActivity;
-import com.jswiftdev.news.R;
 import com.jswiftdev.news.models.Article;
-import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Constants;
 import com.jswiftdev.news.utils.interfaces.SourceChangesListener;
 
 import java.util.ArrayList;
@@ -55,7 +51,7 @@ public class TechNews extends Master implements SourceChangesListener {
 
     @Override
     public void OnSourceChanged(String newSource) {
-        Log.d(C.LOG_TAG, "tech news -> OnSourceChanged");
+        Log.d(Constants.LOG_TAG, "tech news -> OnSourceChanged");
         sourceChangedMaster(newSource);
     }
 }

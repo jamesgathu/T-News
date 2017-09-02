@@ -2,8 +2,10 @@ package com.jswiftdev.news.models;
 
 import com.orm.SugarRecord;
 
-import java.util.List;
-
+/**
+ * maps to articles from {@link com.jswiftdev.news.utils.Constants#BASE_URL} and <br>
+ * acquired through {@link com.jswiftdev.news.network.Api#getArticles(String)}
+ */
 public class Article extends SugarRecord {
     private String author;
     private String title;

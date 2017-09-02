@@ -15,16 +15,12 @@ import android.widget.TextView;
 
 import com.jswiftdev.news.MainActivity;
 import com.jswiftdev.news.R;
-import com.jswiftdev.news.adapters.ArticlesAdapters;
+import com.jswiftdev.news.adapters.ArticlesAdapter;
 import com.jswiftdev.news.models.Article;
 import com.jswiftdev.news.network.Api;
 import com.jswiftdev.news.network.ServiceGenerator;
 import com.jswiftdev.news.network.utils.Response;
-import com.jswiftdev.news.utils.C;
-import com.jswiftdev.news.utils.interfaces.SourceChangesListener;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.jswiftdev.news.utils.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,16 +28,28 @@ import butterknife.ButterKnife;
 
 public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = Master.class.getSimpleName() + ": ";
-    private String activeCategory;
+    /**
+     * carries list of categories that one can sort the sources using
+     *
+     * @see com.jswiftdev.news.models.Source#category
+     */
     private String[] categories;
-    private boolean taskRunning = false;
 
+    /**
+     * displays content as outlined by {@link ArticlesAdapter}
+     */
     @BindView(R.id.rv_articles_list)
     RecyclerView rvArticlesList;
 
+    /**
+     * displays the {@link #categories} as pertained from @{@link Constants#BASE_URL}
+     */
     @BindView(R.id.category_tabs)
     TabLayout categoryTabs;
 
+    /**
+     * monitors refreshing behaviour of the {@link #rvArticlesList}
+     */
     @BindView(R.id.swipe_to_refresh)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -55,7 +63,9 @@ public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRe
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
-        setUpList();
+        rvArticlesList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rvArticlesList.setAdapter(new ArticlesAdapter(getActivity(), Article.listAll(Article.class)));
+
         setUpNewsCategories();
 
         getNews("al-jazeera-english");
@@ -79,19 +89,19 @@ public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRe
         });
     }
 
-    private void setUpList() {
-        rvArticlesList.setLayoutManager(new LinearLayoutManager(getActivity()));
-        rvArticlesList.setAdapter(new ArticlesAdapters(getActivity(), Article.listAll(Article.class)));
-    }
 
+    /**
+     * fetches articles from the api and updates the list
+     *
+     * @param source specifies the {@link com.jswiftdev.news.models.Source#id} to be fetched from
+     */
     public void getNews(final String source) {
         new AsyncTask<String, String, Response>() {
             @Override
             protected void onPreExecute() {
                 super.onPreExecute();
-                Log.d(C.LOG_TAG, "start fetching news -> " + source);
+                Log.d(Constants.LOG_TAG, "start fetching news -> " + source);
                 swipeRefreshLayout.setRefreshing(true);
-                taskRunning = true;
             }
 
             @Override
@@ -102,7 +112,7 @@ public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRe
                                     .getArticles((source != null ? source : "al-jazeera-english")).execute();
                     return (Response) resp.body();
                 } catch (Exception e) {
-                    Log.e(C.LOG_TAG, TAG + e.getMessage());
+                    Log.e(Constants.LOG_TAG, TAG + e.getMessage());
                     return null;
                 }
             }
@@ -110,24 +120,27 @@ public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRe
             @Override
             protected void onPostExecute(Response response) {
                 super.onPostExecute(response);
-                taskRunning = false;
                 if (swipeRefreshLayout != null)
                     swipeRefreshLayout.setRefreshing(false);
 
                 if (response != null) {
-                    Log.d(C.LOG_TAG, response.toString());
+                    Log.d(Constants.LOG_TAG, response.toString());
 
                     if (response.isSuccessful()) {
                         response.saveArticles();
-                        rvArticlesList.setAdapter(new ArticlesAdapters(getActivity(), response.getArticles()));
+                        rvArticlesList.setAdapter(new ArticlesAdapter(getActivity(), response.getArticles()));
                     }
                 } else {
-                    Log.e(C.LOG_TAG, "found null from server");
+                    Log.e(Constants.LOG_TAG, "found null from server");
                 }
             }
         }.execute();
     }
 
+    /**
+     * displays categories tabs borrowing from {@link #categories}
+     * also provides custom view for the tabs
+     */
     private void setUpNewsCategories() {
         categories = getResources().getStringArray(R.array.article_categories);
 
@@ -139,17 +152,19 @@ public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRe
         }
     }
 
-
     @Override
     public void onRefresh() {
         getNews(((MainActivity) getActivity()).getActiveSource());
     }
 
+    /**
+     * called from {@link com.jswiftdev.news.utils.interfaces.SourceChangesListener#OnSourceChanged(String)} <br>
+     * of inheriting fragments
+     *
+     * @param newSource as chosen from change in active tab
+     */
     public void sourceChangedMaster(String newSource) {
         getNews(newSource);
     }
 
-    abstract void cacheForView(List<Article> articles);
-
-    abstract boolean alreadyHasNews();
 }

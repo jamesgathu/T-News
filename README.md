@@ -6,7 +6,7 @@
 News Demo provides a simple example of a news App.
 
 
-The application gets new metadata from [NewsApi](https://newsapi.org/)
+The application gets news metadata from [NewsApi](https://newsapi.org/)
 To set up and learn please get API key first.
 
 ![Alt text](screenshots/master.png?raw=true  "Demo")

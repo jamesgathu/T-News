@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.jswiftdev.news.R;
 import com.jswiftdev.news.SignInActivity;
-import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Constants;
 import com.jswiftdev.news.utils.Utils;
 
 import butterknife.BindView;
@@ -26,13 +26,26 @@ import butterknife.OnClick;
 
 /**
  * Created by james on 9/2/17.
+ * <p>
+ * provide interface for use to sign up
  */
 
 public class SignUp extends Fragment {
+    /**
+     * field for email entry
+     */
     @BindView(R.id.et_email)
     EditText etEmail;
+
+    /**
+     * field for entry of password
+     */
     @BindView(R.id.et_password_original)
     EditText etPasswordOriginal;
+
+    /**
+     * field for entry of password confirmation
+     */
     @BindView(R.id.et_password_repeat)
     EditText etPasswordRepeat;
 
@@ -59,6 +72,9 @@ public class SignUp extends Fragment {
         ButterKnife.bind(this, view);
     }
 
+    /**
+     * handles clicks on sign up button
+     */
     @OnClick(R.id.btn_sign_up)
     public void signUp() {
         if (!etEmail.getText().toString().isEmpty()
@@ -71,7 +87,7 @@ public class SignUp extends Fragment {
                     etPasswordOriginal.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-                    Log.d(C.LOG_TAG, "Completed " + task.toString());
+                    Log.d(Constants.LOG_TAG, "Completed " + task.toString());
                     ((SignInActivity) getActivity()).progressDialog.dismiss();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -94,6 +110,9 @@ public class SignUp extends Fragment {
             Toast.makeText(getActivity(), "Invalid sign up details", Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * handle clicks that redirect to {@link Login}
+     */
     @OnClick(R.id.goto_login)
     public void gotoLogin() {
         ((SignInActivity) getActivity()).move(Login.newInstance());

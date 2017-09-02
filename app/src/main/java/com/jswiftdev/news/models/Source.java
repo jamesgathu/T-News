@@ -3,6 +3,10 @@ package com.jswiftdev.news.models;
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
+/**
+ * maps to sources from {@link com.jswiftdev.news.utils.Constants#BASE_URL} and <br>
+ * acquired through {@link com.jswiftdev.news.network.Api#getSources(String)}
+ */
 public class Source extends SugarRecord {
     @SerializedName("id")
     private String name_id;

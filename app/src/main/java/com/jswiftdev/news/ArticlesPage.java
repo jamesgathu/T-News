@@ -9,16 +9,25 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
-import com.jswiftdev.news.utils.C;
+import com.jswiftdev.news.utils.Constants;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+/**
+ * Handles urls from articles by showing the pages the point to
+ * to use it calling intent should contain {@link Constants#KEY_URL}
+ */
 public class ArticlesPage extends AppCompatActivity {
-    private String url;
+    /**
+     * the web view used to display the content of the page
+     */
     @BindView(R.id.wv_article_content)
     WebView wvArticleSourceContent;
 
+    /**
+     * bar showing the progress of the page being loaded
+     */
     @BindView(R.id.page_loading_progress)
     ProgressBar progressBar;
 
@@ -28,7 +37,7 @@ public class ArticlesPage extends AppCompatActivity {
         setContentView(R.layout.activity_articles_page);
         ButterKnife.bind(this);
 
-        url = getIntent().getStringExtra(C.KEY_URL);
+        String url = getIntent().getStringExtra(Constants.KEY_URL);
 
         if (url != null) {
             WebSettings settings = wvArticleSourceContent.getSettings();
