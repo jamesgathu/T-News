@@ -11,7 +11,7 @@ public class C {
 
     public static final String LOG_TAG = "jameson:";
     public static final String KEY_URL = "key_url";
-    public static final String SERVER_DATE_FORMAT = "YYYY-MM-dd'T'HH:mm:ss'Z'";
+    public static final String SERVER_DATE_FORMAT = "YYYY-MM-dd'T'HH:mm:sss'Z'";
 
     /*main tabs tags*/
     public static String TAG_GENERAL = "GENERAL";
