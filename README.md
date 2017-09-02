@@ -2,9 +2,11 @@
 # News Demo
 News Demo provides a simple example of a news App.
 
-The application gets new metadata from https://newsapi.org/
+The application gets new metadata from [NewsApi](https://newsapi.org/)
 To set up and learn please get API key first.
 
 ![Alt text](screenshots/1.png?raw=true "News")
 ![Alt text](screenshots/2.png?raw=true "News")
+
+Want to learn more about the developer? [Visit Developers site](http://165.227.122.70/)
 
