@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "959542340996",
+    "firebase_url": "https://jswiftdev-news.firebaseio.com",
+    "project_id": "jswiftdev-news",
+    "storage_bucket": "jswiftdev-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959542340996:android:2fe1b08da50d55c5",
+        "android_client_info": {
+          "package_name": "com.jswiftdev.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959542340996-5du3p8rv5h2p4fv9qvdvol8324iu76e9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG9hhVWJTIfg5yFA_fXIHmrEtwGVCdkwc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

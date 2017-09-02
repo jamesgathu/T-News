@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="email_address_e_g_johndoe_gmail_com">Email Address e.g johndoe@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="login">LOGIN</string>
+    <string name="sample_title"><![CDATA[Microsoft’s ‘mixed reality’ headsets are a bit of a mixed bag]]></string>
+    <string name="sample_author">Lucas Matney</string>
+    <string name="sample_description">About ten months ago, Microsoft promised the VR industry a shot in the arm and an update to PC-tethered systems..</string>
+    <string name="sample_post_time">5 hours Ago</string>
+    <string name="business">business</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="create_account">Create Account</string>
+
+    <string-array name="article_categories">
+        <item>business</item>
+        <item>entertainment</item>
+        <item>gaming</item>
+        <item>general</item>
+        <item>music</item>
+        <item>politics</item>
+        <!--<item> science-and-naturestring</item>-->
+        <item> sport</item>
+        <item>technology</item>
+    </string-array>
+</resources>

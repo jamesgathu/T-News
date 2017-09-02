@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">@color/rectangle_color</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <!--<color name="rectangle_color">#ff207d94</color>-->
+    <color name="rectangle_color">#03a99b</color>
+    <color name="gray">#A3A3A3</color>
+    <color name="rectangle_color_faded">#03a99b</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="faded_white">#90FFFFFF</color>
+</resources>
