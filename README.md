@@ -8,8 +8,7 @@ News Demo provides a simple example of a news App.
 The application gets new metadata from [NewsApi](https://newsapi.org/)
 To set up and learn please get API key first.
 
-![Alt text](screenshots/1.png?raw=true  "News")
-![Alt text](screenshots/2.png?raw=true "News")
+![Alt text](screenshots/master.png?raw=true  "Demo")
 
 Download the apk file here [NEWS Demo apk](latest-apk/news_demo.apk?raw=true)
 
