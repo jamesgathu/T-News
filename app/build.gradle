@@ -45,6 +45,7 @@ dependencies {
 
     compile 'com.google.firebase:firebase-auth:11.2.0'
     compile 'net.danlew:android.joda:2.9.9'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
