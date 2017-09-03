@@ -12,6 +12,7 @@
     <string name="sign_up">SIGN UP</string>
     <string name="create_account">Create Account</string>
     <string name="already_have_an_account">Already have an account</string>
+    <string name="internet_connection_error">Please check your connection to the internet</string>
 
     <string-array name="article_categories">
         <item>business</item>

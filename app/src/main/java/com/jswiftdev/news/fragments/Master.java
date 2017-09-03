@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jswiftdev.news.MainActivity;
 import com.jswiftdev.news.R;
@@ -21,6 +22,7 @@ import com.jswiftdev.news.network.Api;
 import com.jswiftdev.news.network.ServiceGenerator;
 import com.jswiftdev.news.network.utils.Response;
 import com.jswiftdev.news.utils.Constants;
+import com.jswiftdev.news.utils.Utils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -96,6 +98,10 @@ public abstract class Master extends Fragment implements SwipeRefreshLayout.OnRe
      * @param source specifies the {@link com.jswiftdev.news.models.Source#id} to be fetched from
      */
     public void getNews(final String source) {
+        if (!Utils.isConnected(getActivity())) {
+            Toast.makeText(getActivity(), R.string.internet_connection_error, Toast.LENGTH_SHORT).show();
+            return;
+        }
         new AsyncTask<String, String, Response>() {
             @Override
             protected void onPreExecute() {

@@ -1,5 +1,8 @@
 package com.jswiftdev.news.utils;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import org.joda.time.DateTime;
@@ -10,6 +13,22 @@ import org.joda.time.format.DateTimeFormat;
  * contains reusable methods from any part of the application
  */
 public class Utils {
+    /**
+     * network is available and active connection is WIFI
+     */
+    private static int TYPE_WIFI = 1;
+
+    /**
+     * network is available and active connection is Mobile Data
+     */
+    private static int TYPE_MOBILE = 2;
+
+    /**
+     * network is not available
+     */
+    private static int TYPE_NOT_CONNECTED = 0;
+
+
     /**
      * checks if an email address if valid
      *
@@ -73,5 +92,49 @@ public class Utils {
 
         Log.d(Constants.LOG_TAG, "Failed " + dateToFind + " hours -> " + hours + "\tdays -> " + days);
         return "Not applicable";
+    }
+
+
+    /**
+     * get connectivity status as {@link #TYPE_MOBILE},  {@link #TYPE_WIFI} or {@link #TYPE_NOT_CONNECTED}
+     *
+     * @param context for the caller
+     * @return constant representative of the status
+     */
+    static int getConnectivityStatus(Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        if (null != activeNetwork) {
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_WIFI)
+                return TYPE_WIFI;
+
+            if (activeNetwork.getType() == ConnectivityManager.TYPE_MOBILE)
+                return TYPE_MOBILE;
+        }
+        return TYPE_NOT_CONNECTED;
+    }
+
+    public static int getConnectivityStatusString(Context context) {
+        int conn = Utils.getConnectivityStatus(context);
+        int status = 0;
+        if (conn == Utils.TYPE_WIFI) {
+            status = TYPE_WIFI;
+        } else if (conn == Utils.TYPE_MOBILE) {
+            status = TYPE_MOBILE;
+        } else if (conn == Utils.TYPE_NOT_CONNECTED) {
+            status = TYPE_NOT_CONNECTED;
+        }
+        return status;
+    }
+
+
+    /**
+     * check for active connection to the internet either Data or Wifi
+     *
+     * @param context from which the caller belongs to
+     * @return true if the is an active connection
+     */
+    public static boolean isConnected(Context context) {
+        return getConnectivityStatus(context) != TYPE_NOT_CONNECTED;
     }
 }

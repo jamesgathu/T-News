@@ -21,6 +21,7 @@ import com.jswiftdev.news.network.Api;
 import com.jswiftdev.news.network.ServiceGenerator;
 import com.jswiftdev.news.network.utils.Response;
 import com.jswiftdev.news.utils.Constants;
+import com.jswiftdev.news.utils.Utils;
 import com.jswiftdev.news.utils.interfaces.SourceChangesListener;
 
 import java.util.ArrayList;
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager();
         getSources();
     }
+
 
     /**
      * sets up the {@link #tabMaster} using {@link #viewPager}
@@ -174,6 +176,11 @@ public class MainActivity extends AppCompatActivity {
         if (allSources != null && allSources.size() > 0) {
             setUpNewsSourcesTabs(null);
         } else {
+            if (!Utils.isConnected(MainActivity.this)) {
+                Toast.makeText(MainActivity.this, R.string.internet_connection_error, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             new AsyncTask<String, String, Response>() {
                 @Override
                 protected void onPreExecute() {
