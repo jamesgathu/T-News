@@ -1,5 +1,4 @@
 *.iml
-#/app/google-services.json
 .gradle
 /local.properties
 /.idea/
@@ -9,4 +8,4 @@
 /captures
 .externalNativeBuild
 app/libs/
-app/google-services.json
+#app/google-services.json
