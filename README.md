@@ -1,6 +1,6 @@
 
 # News Demo  ![Alt text](app/src/main/res/drawable-ldpi/app_icon.png?raw=true "App Icon")
-[ ![Download](screenshots/download.svg) ](latest-apk/news_demo_1.0.2.apk?raw=true)     [ ![Visit Developer](screenshots/developer.svg) ](http://165.227.122.70/)
+[ ![Download](screenshots/download.svg) ](latest-apk/news_demo_1.0.2.apk?raw=true)     [ ![Visit Developer](screenshots/developer.svg) ](http://resume.jswiftdev.com)
 
 
 News Demo provides a simple example of a news App.
@@ -14,5 +14,5 @@ To set up and learn please get API key first.
 Download the apk file here [ ![Download](screenshots/download.svg) ](latest-apk/news_demo_1.0.2.apk?raw=true)
 
 
-Want to learn more about the developer? [Visit Developers site](http://165.227.122.70/)
+Want to learn more about the developer? [Visit Developers site](http://resume.jswiftdev.com)
 
