@@ -14,5 +14,5 @@ To set up and learn please get API key first.
 Download the apk file here [ ![Download](screenshots/download.svg) ](latest-apk/news_demo_1.0.2.apk?raw=true)
 
 
-Want to learn more about the developer? [Visit Developers site](http://resume.jswiftdev.com)
+Want to learn more about the developer? [Visit Developers site](https://jamesgathu.com)
 
